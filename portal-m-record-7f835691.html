@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快速了解 leyu 的用途 · 故事式介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f7f3ed;
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            color: #2b2b2b;
+            line-height: 1.7;
+            padding: 2.5rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 800px;
+            width: 100%;
+            background: #fefcf8;
+            border-radius: 32px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.02);
+            padding: 3rem 2.5rem;
+            transition: all 0.2s;
+        }
+
+        /* 开场短句 — 像一句话楔子 */
+        .opening {
+            font-size: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: #3f3a35;
+            border-left: 6px solid #d1bca0;
+            padding-left: 1.5rem;
+            margin-bottom: 2.2rem;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .opening em {
+            font-style: normal;
+            font-weight: 500;
+            color: #7f6a52;
+            border-bottom: 1px dashed #cbb59b;
+        }
+
+        /* 承接段落 */
+        .context {
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            color: #3d3d3d;
+            text-align: justify;
+        }
+
+        .context p {
+            margin-bottom: 1.4rem;
+        }
+
+        .context a {
+            color: #7f6a52;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #d1bca0;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .context a:hover {
+            background: #ede4d9;
+            text-decoration-color: #7f6a52;
+        }
+
+        /* 特点列表 — 用引用框呈现 */
+        .feature-block {
+            background: #f6f1ea;
+            border-radius: 20px;
+            padding: 2rem 2rem 1.8rem;
+            margin: 2.5rem 0 2.8rem;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .feature-block h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #5b4d3e;
+            margin-bottom: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-block h2::before {
+            content: "✦";
+            font-size: 1.3rem;
+            color: #b29b80;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.3rem;
+            align-items: flex-start;
+        }
+
+        .feature-marker {
+            font-size: 1.2rem;
+            color: #b29b80;
+            min-width: 28px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .feature-text {
+            font-size: 1rem;
+            color: #3d3d3d;
+            line-height: 1.6;
+        }
+
+        .feature-text strong {
+            font-weight: 600;
+            color: #4c4138;
+        }
+
+        /* 温和的收尾 */
+        .closing {
+            border-top: 1px solid #e6ddd2;
+            padding-top: 2rem;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #4f4a44;
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.2rem;
+        }
+
+        .closing-note {
+            font-style: italic;
+            max-width: 70%;
+            color: #5f564e;
+        }
+
+        .closing-note a {
+            color: #7f6a52;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #d1bca0;
+            font-weight: 500;
+        }
+
+        .closing-note a:hover {
+            background: #ede4d9;
+        }
+
+        .closing-meta {
+            font-size: 0.85rem;
+            color: #a0968b;
+            letter-spacing: 0.5px;
+        }
+
+        /* 小提示框 —— 旁白风格 */
+        .aside-tip {
+            background: #f3efe9;
+            border-radius: 16px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0 0.5rem;
+            border-left: 4px solid #cfbaa0;
+            font-size: 0.95rem;
+            color: #595049;
+            display: flex;
+            gap: 0.8rem;
+            align-items: flex-start;
+        }
+
+        .aside-tip span:first-child {
+            font-size: 1.3rem;
+            line-height: 1;
+            color: #b29b80;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .page {
+                padding: 2rem 1.5rem;
+                border-radius: 24px;
+            }
+            .opening {
+                font-size: 1.3rem;
+                padding-left: 1rem;
+            }
+            .feature-block {
+                padding: 1.5rem 1.2rem;
+            }
+            .closing {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+            .closing-note {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 1rem 0.6rem;
+            }
+            .page {
+                padding: 1.6rem 1rem;
+            }
+            .feature-item {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+            .feature-marker {
+                text-align: left;
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 开场短句：一句话点明网站用途的本质 -->
+    <div class="opening">
+        “有些页面，打开的一瞬你就在找那个最直接的答案。<br>
+        而 <em>leyu</em> 的首页，恰好就是那个答案。”
+    </div>
+
+    <!-- 承接段落：从用户快速识别用途的角度展开，自然地嵌入链接 -->
+    <div class="context">
+        <p>
+            当你在浏览器输入一个陌生的地址，最先浮现的问题往往是：<strong>这个网站是做什么的？</strong>
+            没有冗长的引导，没有浮夸的标语——<a href="https://portal-m-leyu.com">leyu</a> 的首页用最朴素的逻辑告诉你：
+            它是一个面向特定用户群体的服务平台入口，聚合了常用的功能模块与信息通道。
+        </p>
+        <p>
+            你不需要翻找介绍页，也不必猜测缩写含义。整个页面围绕「快速定位」来组织，把核心的跳转、通知、状态提示都放在触手可及的位置。
+            哪怕你是第一次接触，也能在三两次点击内判断：这能否满足我当下的需求。
+        </p>
+    </div>
+
+    <!-- 特点列表：用引用块风格展示几个关键特征，克制而清晰 -->
+    <div class="feature-block">
+        <h2>几个让你快速确认的特征</h2>
+
+        <div class="feature-item">
+            <div class="feature-marker">·</div>
+            <div class="feature-text">
+                <strong>入口直接</strong> —— 主要功能模块以卡片或列表形式呈现，不藏进深层菜单；常用操作基本在一级页面完成。
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-marker">·</div>
+            <div class="feature-text">
+                <strong>信息分层</strong> —— 公告、提示、个人动态各占其位，视觉权重分明；你不会把通知和导航混在一起。
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-marker">·</div>
+            <div class="feature-text">
+                <strong>状态可见</strong> —— 登录状态、待办提醒、系统消息都有专属区域，扫一眼就能掌握当前情况。
+            </div>
+        </div>
+        <div class="feature-item">
+            <div class="feature-marker">·</div>
+            <div class="feature-text">
+                <strong>语言与习惯</strong> —— 页面使用中文，版式符合本地用户阅读流，减少认知负担。
+            </div>
+        </div>
+    </div>
+
+    <!-- 温和的提示框：用于补充使用场景，像朋友的提醒 -->
+    <div class="aside-tip">
+        <span>💡</span>
+        <span>如果你习惯于先看「我能在这里做什么」，那么 <a href="https://portal-m-leyu.com">leyu</a> 的首页就是为你准备的——功能标签和简短说明已经列好，不需要从零摸索。</span>
+    </div>
+
+    <!-- 温和收尾：同时再次自然嵌入链接，但不重复相同句式 -->
+    <div class="closing">
+        <div class="closing-note">
+            ⇢ 当然，最好的辨认方式还是直接打开 <a href="https://portal-m-leyu.com">leyu</a> 看一眼。
+            毕竟页面传递的感觉，往往比任何描述都更准确。
+        </div>
+        <div class="closing-meta">
+            — 仅作介绍 · 真实用途以网站实际内容为准
+        </div>
+    </div>
+</div>
+</body>
+</html>
